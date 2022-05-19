@@ -119,7 +119,7 @@ const StyledLink = styled(Link)`
 text-decoration : none;
 color :${props => props.theme.colorCT};
 &:hover{
-color :#C4E8CA;
+color :${props => props.theme.articleHoverCL};
 }
 `
 
@@ -136,7 +136,7 @@ color : ${props => props.theme.colorCT};
 background-color :  ${props => props.theme.backgroundColorNV};
 border-radius : 0.5rem;
 &:hover{
-color :#C4E8CA;
+color :${props => props.theme.articleHoverCL};
 }
 `;
 

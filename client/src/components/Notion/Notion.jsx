@@ -87,7 +87,7 @@ const BackToMain = styled.div`
     top: 0;
     left: 0;
     width: 20%;
-    margin :18% auto;
+    margin :20% auto;
     height: 100vh;
   `
 const GoToSuggestion = styled.div`
@@ -95,7 +95,7 @@ const GoToSuggestion = styled.div`
     top: 0;
     right: 0;
     width: 20%;
-    margin :18% auto;
+    margin :20% auto;
     height: 100vh;
   
 `
