@@ -69,7 +69,7 @@ const { setLoginStatus,
             <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" />  
             <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
             </LogoFrame>
-            <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink> 
+            <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }??</StyledLink> 
             <StyledLink  to="/board">{isEnglishMode? 'Contact' : '게시판' }</StyledLink>  
                  {isEnglishMode? 'Credit' : '크레딧' }
                   <span onClick={changeLan}>
@@ -119,7 +119,7 @@ const StyledLink = styled(Link)`
 text-decoration : none;
 color :${props => props.theme.colorCT};
 &:hover{
-color :#C4E8CA;
+color :${props => props.theme.articleHoverCL};
 }
 `
 
@@ -136,7 +136,7 @@ color : ${props => props.theme.colorCT};
 background-color :  ${props => props.theme.backgroundColorNV};
 border-radius : 0.5rem;
 &:hover{
-color :#C4E8CA;
+color :${props => props.theme.articleHoverCL};
 }
 `;
 

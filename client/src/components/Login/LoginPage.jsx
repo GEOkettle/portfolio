@@ -67,12 +67,12 @@ export default function LoginPage() {
 
       <StyledForm onSubmit={e => onSubmitHandler(e)}>
         <div >
-        <label htmlFor="userID">{isEnglishMode ? "ID :" : '아이디 :'}</label>
+        <label htmlFor="userID">{isEnglishMode ? "ID : " : '아이디 :'}</label>
         <StyledInput type="text" id='userID' name='userID' value={userID} onChange={e=>onUseridHandler(e)}  />
         </div>
                 
         <div>
-        <label htmlFor="password">{isEnglishMode ? "PW :" : '암호 :'}  </label>
+        <label htmlFor="password">{isEnglishMode ? "PW : " : '암호 :'}  </label>
         <StyledInput  type="password" id='password' name='password' value={password} onChange={e=>onPasswordHandler(e)}  />    
         </div>
               
