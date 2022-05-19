@@ -3,7 +3,7 @@ import axios from 'axios';
 // http://geo-works.herokuapp.com/
 
 const instance = axios.create({
-    baseURL: process.env.BASE_URL || 'http://localhost:5000/',
+    baseURL: process.env.BASE_URL,
     
     withCredentials: true,
 
