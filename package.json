@@ -5,7 +5,7 @@
   "proxy": "http://localhost:5000/",
   "main": "server.js",
   "engine": {
-    "node": "v16.16.0",
+    "node": "16.16.0",
     "npm": "8.11.0"
   },
   "scripts": {
