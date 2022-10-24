@@ -7,7 +7,15 @@ const users = require('./routes/api/users');
 const board = require('./routes/api/board');
 const mongoose = require('mongoose');
 var cors = require('cors')
-app.use((cors({ origin: 'http://geo-portfolio.herokuapp.com',  credentials: true })));
+// in develop: http://localhost:3000
+// in production: http://geo-portfolio.herokuapp.com
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+if (process.env.NODE_ENV === "production") { 
+    app.use(
+      cors({ origin: "http://geo-portfolio.herokuapp.com", credentials: true })
+    );
+
+}
 app.set('trust proxy', 1);
 
 app.use(express.urlencoded( {extended : false } ));// bodyparser
