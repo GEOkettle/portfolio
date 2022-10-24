@@ -53,7 +53,7 @@ const { setLoginStatus,
         (<Frame>
       <LogoFrame>
       <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" />  
-      <h1>{isEnglishMode ? 'Portfoliotest' : '포트폴리오test' }</h1>
+      <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
       </LogoFrame>
         
         <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink>     
