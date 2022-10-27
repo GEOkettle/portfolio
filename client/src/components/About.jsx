@@ -6,6 +6,7 @@ import 'react-notion/src/styles.css';
 import styled, { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router-dom';
 import useStore from '../store/store';
+import ChannelService from './ChannelTalk/ChannelService';
 
 
 
@@ -32,6 +33,23 @@ export function Article(props) {
 }
 
 export default function About() {
+    // Boot Channel as an anonymous user
+
+
+// // Boot Channel as a registered user
+// ChannelService.boot({
+//   "pluginKey": "YOUR_PLUGIN_KEY", //please fill with your plugin key
+//   "memberId": "YOUR_USER_ID", //fill with user id
+//   "profile": {
+//     "name": "YOUR_USER_NAME", //fill with user name
+//     "mobileNumber": "YOUR_USER_MOBILE_NUMBER", //fill with user phone number
+//     "CUSTOM_VALUE_1": "VALUE_1", //any other custom meta data
+//     "CUSTOM_VALUE_2": "VALUE_2"
+//   }
+// });
+
+// // Shutdown Channel
+// ChannelService.shutdown();
 
     const {isDarkMode,inDarkMode,inLightMode,isEnglishMode,isLoading,setIsLoading} = useStore();
     const [mainArticle, setMainArticle] = useState({})
@@ -45,7 +63,17 @@ export default function About() {
         setOnClickColor(color)
     }
     
-      useEffect(() => {
+    useEffect(() => {
+        //chatbot
+        ChannelIO('boot', {
+        pluginKey: '57248d93-bea9-4afa-889a-0b5cba58121a'
+        }, function onBoot(error, user) {
+        if (error) {
+        console.error(error);
+        } else {
+        console.log('boot success', user)
+        }
+        });
     // 두번째 방법
     const NOTION_PAGE_ID = '83fca179f8314fd784e541e3368df6a5';
     const NOTION_PAGE_ID_KR ='658634c7564b47a285670ec94982331a'
@@ -78,7 +106,12 @@ export default function About() {
         // if (document.getElementsByClassName(onClickColor)!==undefined) { 
         // }
     }, [onClickColor])
+      ChannelService.boot({
+  "pluginKey": "57248d93-bea9-4afa-889a-0b5cba58121a" //please fill with your plugin key
+});
+
     return (
+        
         <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
             
             <MainFrame>
