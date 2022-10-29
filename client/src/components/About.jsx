@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import { NotionRenderer } from 'react-notion'
 import 'prismjs/themes/prism-tomorrow.css'; // only needed for code highlighting
 import 'react-notion/src/styles.css';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, withTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
 import useStore from '../store/store';
-import Logo from '../assets/Logo.png'
+import { useScroll } from '../hook/useScroll';
 import LoadingPage from './LoadingPage';
 import ChannelService from './ChannelTalk/ChannelService';
 
@@ -17,7 +17,8 @@ import ChannelService from './ChannelTalk/ChannelService';
 export function Article(props) {
     
     return (
-      <>
+        <>
+    
             <ArticleFrame >
             <Link to={props.link} >
                     <div style={{height :'70px', overflow:'hidden'}}>
@@ -40,13 +41,16 @@ export default function About() {
     const {isDarkMode,inDarkMode,inLightMode,isEnglishMode} = useStore();
     const [mainArticle, setMainArticle] = useState({})
     const [ArticleList, setArticleList] = useState([])
+    const [section1,setSection1] = useState(0)
+    const [section2,setSection2] = useState(0)
+    const [section3,setSection3] = useState(0)
     const [isLoading,setIsLoading] = useState(true)
     const [onClickColor,setOnClickColor] = useState('')
-
+    const { scrollY } = useScroll();
     const setActiveColor = (e) => { 
         
         const color = e.target.href.split('#')[1]
-       
+      
         setOnClickColor(color)
     }
     
@@ -62,6 +66,14 @@ export default function About() {
       .then(res => res.json())
       .then((resJson) => {
           setMainArticle(resJson);
+          setSection1(document.getElementById('section1').getBoundingClientRect().bottom)
+          console.log(document.getElementById('section1').getBoundingClientRect())
+          
+          setSection2(document.getElementById('section2').getBoundingClientRect().bottom)
+          console.log(document.getElementById('section2').getBoundingClientRect())
+
+          setSection3(document.getElementById('section3').getBoundingClientRect().bottom)
+          console.log(document.getElementById('section3').getBoundingClientRect())
           
       });
           
@@ -69,10 +81,9 @@ export default function About() {
         const NOTION_TABLE_ID_KR = 'a8442bd75a054f288b13d9cf6414bfd9'
         fetch(`https://notion-api.splitbee.io/v1/table/${isEnglishMode ? NOTION_TABLE_ID : NOTION_TABLE_ID_KR}`)
       .then(res =>res.json())
-            .then((resJson) => {
-                setArticleList(resJson);
-                setIsLoading(false)
-                
+                .then((resJson) => {
+                    setArticleList(resJson);
+               setIsLoading(false)
             })
 
       }, [isEnglishMode])
@@ -84,36 +95,61 @@ export default function About() {
             if (onClickColor) {
                 
                 document.getElementsByClassName(onClickColor)[0].classList.add('active')
-            }
-        // if (document.getElementsByClassName(onClickColor)!==undefined) { 
-        // }
+        }
+    
     }, [onClickColor])
-
+    useEffect(() => {
+        console.log(scrollY)
+        console.log('section1 : '+section1)
+        console.log('section2 : '+section2)
+        console.log('section3 : '+section3)
+        //개씹하드코딩이네
+        if (section1 > scrollY) { 
+               if (document.getElementsByClassName('active')[0]) { 
+            console.log(document.getElementsByClassName('active'))
+             document.getElementsByClassName('active')[0].classList.remove('active')
+            }   
+            document.getElementsByClassName("section1")[0].classList.add('active')
+        } else if ((section1 < scrollY) && (section2+section1-500 > scrollY)) {
+            if (document.getElementsByClassName('active')[0]) { 
+                console.log(document.getElementsByClassName('active'))
+                document.getElementsByClassName('active')[0].classList.remove('active')
+            }
+            document.getElementsByClassName("section2")[0].classList.add('active')
+        }else if ((section2 < scrollY) && (section3 > scrollY)) {
+            if (document.getElementsByClassName('active')[0]) { 
+                console.log(document.getElementsByClassName('active'))
+                document.getElementsByClassName('active')[0].classList.remove('active')
+            }
+            document.getElementsByClassName("section3")[0].classList.add('active')
+        }
+     },[scrollY])
     // while isLoading
 
     return (
         
         <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
             {isLoading ? <LoadingPage/> :
-            <MainFrame>
+                <MainFrame>
+                    
                 <SideBar>
                     <ul>
                     <li>
-                            <a href="#section1" className='section1' onClick={e => setActiveColor(e)}>{isEnglishMode ? 'Self-introduction' : '자기소개'}</a>
+                    <a href="#section1"  className='section1' onClick={e => setActiveColor(e)}>{isEnglishMode ? 'Self-introduction' : '자기소개'}</a>
                     </li>
                         
                     <li>
-                    <a href="#section2" className='section2' onClick={e=>setActiveColor(e)}>{isEnglishMode ? 'Projects' : '프로젝트'}</a>
+                    <a  href="#section2" className='section2' onClick={e=>setActiveColor(e)}>{isEnglishMode ? 'Projects' : '프로젝트'}</a>
                     </li>
                     <li>
-                    <a href="#section3" className='section3' onClick={e=>setActiveColor(e)}>{isEnglishMode ? 'Contact' : '연락처'}</a>
+                    <a  href="#section3" className='section3' onClick={e=>setActiveColor(e)}>{isEnglishMode ? 'Contact' : '연락처'}</a>
                     </li>
                     </ul>
                 </SideBar>
                 <section id='section1'>
-
                     
     <MainArticle>
+    
     <NotionRenderer 
   
   blockMap={mainArticle}
@@ -141,7 +177,8 @@ export default function About() {
             )
         } 
         )}
-        </Articleboard>
+                    </Articleboard>
+                    
                 <ContactSection id='section3' style={{ minHeight: '300px', width: '100%' }}>
                     <h1>contact</h1>
                     <SvgDiv> 
@@ -232,6 +269,7 @@ const SideBar = styled.div`
                  color:${props => props.theme.articleHoverCL};
                 border-bottom: 2px solid ${props => props.theme.articleHoverCL};
                 font-weight: 900;
+                font-size:1.5rem;
                  }
              
  
