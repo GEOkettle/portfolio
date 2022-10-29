@@ -104,25 +104,28 @@ export default function About() {
         console.log('section2 : '+section2)
         console.log('section3 : '+section3)
         //개씹하드코딩이네
-        if (section1 > scrollY) { 
-               if (document.getElementsByClassName('active')[0]) { 
-            console.log(document.getElementsByClassName('active'))
-             document.getElementsByClassName('active')[0].classList.remove('active')
-            }   
-            document.getElementsByClassName("section1")[0].classList.add('active')
-        } else if ((section1 < scrollY) && (section2+section1-500 > scrollY)) {
-            if (document.getElementsByClassName('active')[0]) { 
-                console.log(document.getElementsByClassName('active'))
-                document.getElementsByClassName('active')[0].classList.remove('active')
-            }
-            document.getElementsByClassName("section2")[0].classList.add('active')
-        }else if ((section2 < scrollY) && (section3 > scrollY)) {
+        if (document.getElementsByClassName("section1")[0]) { 
+
+            if (section1 > scrollY) { 
+                if (document.getElementsByClassName('active')[0]) { 
+                    console.log(document.getElementsByClassName('active'))
+                    document.getElementsByClassName('active')[0].classList.remove('active')
+                }   
+                document.getElementsByClassName("section1")[0].classList.add('active')
+            } else if ((section1 < scrollY) && (section2+section1-500 > scrollY)) {
+                if (document.getElementsByClassName('active')[0]) { 
+                    console.log(document.getElementsByClassName('active'))
+                    document.getElementsByClassName('active')[0].classList.remove('active')
+                }
+                document.getElementsByClassName("section2")[0].classList.add('active')
+            }else if ((section2 < scrollY) && (section3 > scrollY)) {
             if (document.getElementsByClassName('active')[0]) { 
                 console.log(document.getElementsByClassName('active'))
                 document.getElementsByClassName('active')[0].classList.remove('active')
             }
             document.getElementsByClassName("section3")[0].classList.add('active')
         }
+    }
      },[scrollY])
     // while isLoading
 
