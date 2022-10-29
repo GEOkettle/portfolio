@@ -57,7 +57,7 @@ const { setLoginStatus,
       <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
       </LogoFrame>
         
-        <StyledLink to="/board"><FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /> </StyledLink>    
+        <FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} />     
                  {isEnglishMode? 'Credit' : '크레딧' }
                   <span onClick={changeLan}>
                   {isEnglishMode? '한/영' : 'En/KOR' }
@@ -75,7 +75,7 @@ const { setLoginStatus,
                   <span onClick={changeLan}>
                  {isEnglishMode? '한/영' : 'En/Kor' }
                   </span>
-            <StyledLink  to="/board"><FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /></StyledLink>  
+            <FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} />  
                   <div>
                 
             <StyledLink to="/login">{isEnglishMode? 'Sign In' : '로그인' }</StyledLink>/  
