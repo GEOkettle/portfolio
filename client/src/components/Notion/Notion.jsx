@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import useStore from '../../store/store';
 import {Link} from 'react-router-dom';
-
+import LoadingPage from '../LoadingPage';
 
 import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
@@ -18,7 +18,7 @@ export default function Notion() {
 
     const { slug } = useParams()
     const [blockMap, setBlockMap] = useState({})
-
+    const [isLoading,setIsLoading] = useState(true)
      const notionSlugToId = async (slug)=> { 
          const NOTION_TABLE_ID = 'e0d1a00fc0cd4590afb5704f59bc72df';
          const NOTION_TABLE_ID_KR = 'a8442bd75a054f288b13d9cf6414bfd9'
@@ -39,6 +39,7 @@ export default function Notion() {
 
         
         const notionData = await fetch(`https://notion-api.splitbee.io/v1/page/${notionId}`).then(res => res.json())
+        setIsLoading(false)
         setBlockMap(notionData)
         
 
@@ -47,6 +48,8 @@ export default function Notion() {
     },[isEnglishMode])
   return (
       <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
+          {isLoading ? <LoadingPage /> :
+              <>
           <BackToMain>
                 <StyledLink to="/about">←Back To Main</StyledLink>
           </BackToMain>
@@ -54,19 +57,21 @@ export default function Notion() {
           <NotionRenderer
             fullPage={true}
             blockMap={blockMap}
-              />
+            />
           </MainFrame>
           <GoToSuggestion>
               
                 <StyledLink to="/board">go To suggestion</StyledLink>
           </GoToSuggestion>
+            </>
+}
     </ThemeProvider>
   )
 }
 
 const MainFrame = styled.div`
 min-height: 100vh;
-    background-color: ${props => props.theme.backgroundColor};
+background-color: ${props => props.theme.backgroundColor};
  .notion{
         //darkmodechange
         color : ${props => props.theme.color};
