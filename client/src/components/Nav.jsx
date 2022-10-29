@@ -123,15 +123,20 @@ img{
 const StyledLink = styled(Link)`
 text-decoration : none;
 color :${props => props.theme.colorCT};
+transition: transform .2s;
 &:hover{
 color :${props => props.theme.articleHoverCL};
+transform: scale(1.2);
 }
 `
 const StyledSpan = styled.span`
 text-decoration : none;
 color :${props => props.theme.colorCT};
+transition: transform .2s;
 &:hover{
 color :${props => props.theme.articleHoverCL};
+transform: scale(1.2);
+background-color:${props => props.theme.articleHoverCL};
 }
 cursor: pointer;
 `

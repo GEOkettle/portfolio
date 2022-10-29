@@ -86,6 +86,12 @@ const Up = styled.div`
     width: 60px;
     height: 60px;
     border-radius : 50%;
+    transition: transform .2s;
+
+    &:hover{
+    background-color:${props => props.theme.articleHoverCL};
+    transform: scale(1.2);
+    }
     cursor: pointer;
     display:flex;
     align-items:center;

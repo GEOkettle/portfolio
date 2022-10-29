@@ -21,12 +21,12 @@ export function Article(props) {
     
             <ArticleFrame >
             <Link to={props.link} >
+                    <img style={{height: '100px',width:'200px',borderRadius:"5%"}} src={ props.imgsrc}  />
                     <div style={{height :'70px', overflow:'hidden'}}>
 
         <h1>{props.title}</h1>
                     </div>
-                    <img src={ props.imgsrc}  />
-        <div style={{height: '120px'}}></div>
+        
         <p>{props.description}</p>
         <p>{props.date}</p>
         </Link>
@@ -284,7 +284,9 @@ const SideBar = styled.div`
                 color:${props => props.theme.color};
                 text-decoration: none !important;
                 font-weight : 600;
+               
                 &:hover{
+                    font-size:1.2rem;
                     color:${props => props.theme.articleHoverCL};
                     border-bottom: 2px solid ${props => props.theme.articleHoverCL};
                 }
