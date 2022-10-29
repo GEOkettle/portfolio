@@ -6,6 +6,8 @@ import 'react-notion/src/styles.css';
 import styled, { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router-dom';
 import useStore from '../store/store';
+import Logo from '../assets/Logo.png'
+import LoadingPage from './LoadingPage';
 import ChannelService from './ChannelTalk/ChannelService';
 
 
@@ -33,27 +35,12 @@ export function Article(props) {
 }
 
 export default function About() {
-    // Boot Channel as an anonymous user
 
 
-// // Boot Channel as a registered user
-// ChannelService.boot({
-//   "pluginKey": "YOUR_PLUGIN_KEY", //please fill with your plugin key
-//   "memberId": "YOUR_USER_ID", //fill with user id
-//   "profile": {
-//     "name": "YOUR_USER_NAME", //fill with user name
-//     "mobileNumber": "YOUR_USER_MOBILE_NUMBER", //fill with user phone number
-//     "CUSTOM_VALUE_1": "VALUE_1", //any other custom meta data
-//     "CUSTOM_VALUE_2": "VALUE_2"
-//   }
-// });
-
-// // Shutdown Channel
-// ChannelService.shutdown();
-
-    const {isDarkMode,inDarkMode,inLightMode,isEnglishMode,isLoading,setIsLoading} = useStore();
+    const {isDarkMode,inDarkMode,inLightMode,isEnglishMode} = useStore();
     const [mainArticle, setMainArticle] = useState({})
     const [ArticleList, setArticleList] = useState([])
+    const [isLoading,setIsLoading] = useState(true)
     const [onClickColor,setOnClickColor] = useState('')
 
     const setActiveColor = (e) => { 
@@ -67,12 +54,6 @@ export default function About() {
         //chatbot
         ChannelIO('boot', {
         pluginKey: '57248d93-bea9-4afa-889a-0b5cba58121a'
-        }, function onBoot(error, user) {
-        if (error) {
-        console.error(error);
-        } else {
-        console.log('boot success', user)
-        }
         });
     // 두번째 방법
     const NOTION_PAGE_ID = '83fca179f8314fd784e541e3368df6a5';
@@ -80,7 +61,8 @@ export default function About() {
     fetch(`https://notion-api.splitbee.io/v1/page/${isEnglishMode ? NOTION_PAGE_ID : NOTION_PAGE_ID_KR}`)
       .then(res => res.json())
       .then((resJson) => {
-        setMainArticle(resJson);
+          setMainArticle(resJson);
+          
       });
           
         const NOTION_TABLE_ID = 'e0d1a00fc0cd4590afb5704f59bc72df';
@@ -89,9 +71,9 @@ export default function About() {
       .then(res =>res.json())
             .then((resJson) => {
                 setArticleList(resJson);
-               
-            });     
-        
+                setIsLoading(false)
+                
+            })
 
       }, [isEnglishMode])
     useEffect( () => { 
@@ -106,14 +88,13 @@ export default function About() {
         // if (document.getElementsByClassName(onClickColor)!==undefined) { 
         // }
     }, [onClickColor])
-      ChannelService.boot({
-  "pluginKey": "57248d93-bea9-4afa-889a-0b5cba58121a" //please fill with your plugin key
-});
+
+    // while isLoading
 
     return (
         
         <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
-            
+            {isLoading ? <LoadingPage/> :
             <MainFrame>
                 <SideBar>
                     <ul>
@@ -131,13 +112,14 @@ export default function About() {
                 </SideBar>
                 <section id='section1'>
 
+                    
     <MainArticle>
     <NotionRenderer 
-    //    blockMap={staticResponse}
-    blockMap={mainArticle}
-    fullPage={true}
-    
-    />
+  
+  blockMap={mainArticle}
+  fullPage={true}
+  
+  />
     </MainArticle>
                 </section>
                 <section id='section2' style={{minHeight:'150px'}}>
@@ -169,8 +151,10 @@ export default function About() {
         </svg>
             <span><a href="https://github.com/awesomeji">https://github.com/GEOkettle</a></span>            
         </SvgDiv>
-        </ContactSection>
+                </ContactSection>
+         
       </MainFrame>
+    }
         </ThemeProvider>
        
   )
@@ -181,17 +165,15 @@ const Articleboard = styled.div`
     display: flex;
     flex-wrap : wrap;
     align-items : center;
-    width: 60%;
-    margin : 0 0 0 12%;
-    justify-content: flex-start;
+    width: 50%;
+    margin : 0 0 0 8%;
+    justify-content: flex-start ;
     
 
 
 `
 const ArticleFrame = styled.div`
 background: ${props => props.theme.articleBG};
-/* border : ${props => props.theme.greenLine}; */
-/* border-radius : 10px; */
 text-align : center;
 a{
     text-decoration : none !important;

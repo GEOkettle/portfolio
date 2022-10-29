@@ -7,7 +7,8 @@ import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import LogoWhite from '../assets/LogoWhite.png';
 import Logo from '../assets/Logo.png';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon,faSun } from "@fortawesome/free-solid-svg-icons";
 export default function Nav() {
      const navigate = useNavigate();
 const { setLoginStatus,
@@ -56,12 +57,12 @@ const { setLoginStatus,
       <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
       </LogoFrame>
         
-        <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink>     
-        <StyledLink to="/board">{isEnglishMode? 'Contact' : '게시판' }</StyledLink>    
+        <StyledLink to="/board"><FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /> </StyledLink>    
                  {isEnglishMode? 'Credit' : '크레딧' }
                   <span onClick={changeLan}>
                   {isEnglishMode? '한/영' : 'En/KOR' }
                   </span>
+        <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink>     
        <StyledButton onClick={logoutHandler}>  {isEnglishMode? 'LogOut' : '로그아웃' }</StyledButton> 
       </Frame> )
         : (<Frame>
@@ -69,12 +70,12 @@ const { setLoginStatus,
             <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" />  
             <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
             </LogoFrame>
-            <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }??</StyledLink> 
-            <StyledLink  to="/board">{isEnglishMode? 'Contact' : '게시판' }</StyledLink>  
+            <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink> 
                  {isEnglishMode? 'Credit' : '크레딧' }
                   <span onClick={changeLan}>
-                 {isEnglishMode? '한/영' : 'En/KOR' }
+                 {isEnglishMode? '한/영' : 'En/Kor' }
                   </span>
+            <StyledLink  to="/board"><FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /></StyledLink>  
                   <div>
                 
             <StyledLink to="/login">{isEnglishMode? 'Sign In' : '로그인' }</StyledLink>/  

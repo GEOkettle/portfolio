@@ -4,7 +4,6 @@ const passport = require('passport');
 const app = express();
 const cookieparser = require('cookie-parser');  
 const users = require('./routes/api/users');
-const board = require('./routes/api/board');
 const mongoose = require('mongoose');
 var cors = require('cors')
 // in develop: http://localhost:3000
@@ -52,7 +51,7 @@ require('./middleware/passport')(passport);
 
 // 라우팅 파트
 app.use('/api/users', users);
-app.use('/api/board', board);
+
 
 
 // Serve static assets if in production
