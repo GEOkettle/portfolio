@@ -57,12 +57,14 @@ const { setLoginStatus,
       <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
       </LogoFrame>
         
-        <FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} />     
-                 {isEnglishMode? 'Credit' : '크레딧' }
-                  <span onClick={changeLan}>
-                  {isEnglishMode? '한/영' : 'En/KOR' }
-                  </span>
-        <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink>     
+        <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink> 
+                {isEnglishMode? 'Credit' : '크레딧' }
+                <StyledSpan onClick={changeLan}>
+                {isEnglishMode? '한/영' : 'En/Kor' }
+                    </StyledSpan>
+                    <StyledSpan>
+            <FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} />  
+                </StyledSpan>   
        <StyledButton onClick={logoutHandler}>  {isEnglishMode? 'LogOut' : '로그아웃' }</StyledButton> 
       </Frame> )
         : (<Frame>
@@ -71,11 +73,13 @@ const { setLoginStatus,
             <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
             </LogoFrame>
             <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink> 
-                 {isEnglishMode? 'Credit' : '크레딧' }
-                  <span onClick={changeLan}>
-                 {isEnglishMode? '한/영' : 'En/Kor' }
-                  </span>
+                {isEnglishMode? 'Credit' : '크레딧' }
+                <StyledSpan onClick={changeLan}>
+                {isEnglishMode? '한/영' : 'En/Kor' }
+                    </StyledSpan>
+                    <StyledSpan>
             <FontAwesomeIcon onClick={changeMode} icon={isDarkMode ? faMoon : faSun} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} />  
+                </StyledSpan>
                   <div>
                 
             <StyledLink to="/login">{isEnglishMode? 'Sign In' : '로그인' }</StyledLink>/  
@@ -122,6 +126,14 @@ color :${props => props.theme.colorCT};
 &:hover{
 color :${props => props.theme.articleHoverCL};
 }
+`
+const StyledSpan = styled.span`
+text-decoration : none;
+color :${props => props.theme.colorCT};
+&:hover{
+color :${props => props.theme.articleHoverCL};
+}
+cursor: pointer;
 `
 
 const StyledButton = styled.button`

@@ -25,6 +25,7 @@ export function Article(props) {
 
         <h1>{props.title}</h1>
                     </div>
+                    <img src={ props.imgsrc}  />
         <div style={{height: '120px'}}></div>
         <p>{props.description}</p>
         <p>{props.date}</p>
@@ -62,35 +63,31 @@ export default function About() {
     // 두번째 방법
     const NOTION_PAGE_ID = '83fca179f8314fd784e541e3368df6a5';
     const NOTION_PAGE_ID_KR ='658634c7564b47a285670ec94982331a'
-    fetch(`https://notion-api.splitbee.io/v1/page/${isEnglishMode ? NOTION_PAGE_ID : NOTION_PAGE_ID_KR}`)
-      .then(res => res.json())
-      .then((resJson) => {
-          setMainArticle(resJson);
-          setSection1(document.getElementById('section1').getBoundingClientRect().bottom)
-          console.log(document.getElementById('section1').getBoundingClientRect())
-          
-          setSection2(document.getElementById('section2').getBoundingClientRect().bottom)
-          console.log(document.getElementById('section2').getBoundingClientRect())
+    
 
-          setSection3(document.getElementById('section3').getBoundingClientRect().bottom)
-          console.log(document.getElementById('section3').getBoundingClientRect())
-          
-      });
-          
         const NOTION_TABLE_ID = 'e0d1a00fc0cd4590afb5704f59bc72df';
         const NOTION_TABLE_ID_KR = 'a8442bd75a054f288b13d9cf6414bfd9'
         fetch(`https://notion-api.splitbee.io/v1/table/${isEnglishMode ? NOTION_TABLE_ID : NOTION_TABLE_ID_KR}`)
-      .then(res =>res.json())
-                .then((resJson) => {
-                    setArticleList(resJson);
-               setIsLoading(false)
-            })
-
-      }, [isEnglishMode])
+    .then(res =>res.json())
+            .then((resJson) => {
+            console.log(resJson)
+            setArticleList(resJson);
+        }).then(() => { 
+            fetch(`https://notion-api.splitbee.io/v1/page/${isEnglishMode ? NOTION_PAGE_ID : NOTION_PAGE_ID_KR}`)
+            .then(res => res.json())
+            .then((resJson) => {
+                setMainArticle(resJson);
+                setIsLoading(false)
+        setSection1(document.getElementById('section1').getBoundingClientRect().bottom)
+        setSection2(document.getElementById('section2').getBoundingClientRect().bottom)
+        setSection3(document.getElementById('section3').getBoundingClientRect().bottom)
+    })
+        })
+    }, [isEnglishMode])
     useEffect( () => { 
         if (document.getElementsByClassName('active')[0]) { 
             console.log(document.getElementsByClassName('active'))
-             document.getElementsByClassName('active')[0].classList.remove('active')
+            document.getElementsByClassName('active')[0].classList.remove('active')
             }
             if (onClickColor) {
                 
@@ -99,28 +96,22 @@ export default function About() {
     
     }, [onClickColor])
     useEffect(() => {
-        console.log(scrollY)
-        console.log('section1 : '+section1)
-        console.log('section2 : '+section2)
-        console.log('section3 : '+section3)
+
         //개씹하드코딩이네
         if (document.getElementsByClassName("section1")[0]) { 
 
             if (section1 > scrollY) { 
                 if (document.getElementsByClassName('active')[0]) { 
-                    console.log(document.getElementsByClassName('active'))
                     document.getElementsByClassName('active')[0].classList.remove('active')
                 }   
                 document.getElementsByClassName("section1")[0].classList.add('active')
             } else if ((section1 < scrollY) && (section2+section1-500 > scrollY)) {
                 if (document.getElementsByClassName('active')[0]) { 
-                    console.log(document.getElementsByClassName('active'))
                     document.getElementsByClassName('active')[0].classList.remove('active')
                 }
                 document.getElementsByClassName("section2")[0].classList.add('active')
             }else if ((section2 < scrollY) && (section3 > scrollY)) {
             if (document.getElementsByClassName('active')[0]) { 
-                console.log(document.getElementsByClassName('active'))
                 document.getElementsByClassName('active')[0].classList.remove('active')
             }
             document.getElementsByClassName("section3")[0].classList.add('active')
@@ -169,6 +160,7 @@ export default function About() {
     {ArticleList.map((blog, index) => {
         return (
             <Article
+            imgsrc={ blog.img}
             title={blog.Name}
             description={blog.description}
             date={blog.date}
@@ -214,6 +206,7 @@ const Articleboard = styled.div`
 `
 const ArticleFrame = styled.div`
 background: ${props => props.theme.articleBG};
+/* background: linear-gradient(90deg, green 0%, green 35%, ${props => props.theme.articleBG} 100%); */
 text-align : center;
 a{
     text-decoration : none !important;
@@ -228,6 +221,8 @@ padding: 12px;
 margin: 20px 25px;
 width: 200px;
 height:300px; 
+border-radius:5%;
+
 `
 const MainArticle = styled.div`
     width :100%;
@@ -258,6 +253,8 @@ const MainFrame = styled.div`
     /* margin :0.5px 0 0 0 ; */
    
     background-color: ${props => props.theme.backgroundColor};
+
+    
    
 `
 
@@ -273,6 +270,7 @@ const SideBar = styled.div`
                 border-bottom: 2px solid ${props => props.theme.articleHoverCL};
                 font-weight: 900;
                 font-size:1.5rem;
+                
                  }
              
  
