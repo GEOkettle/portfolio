@@ -127,6 +127,7 @@ transition: transform .2s;
 &:hover{
 color :${props => props.theme.articleHoverCL};
 transform: scale(1.2);
+font-size:1.8rem;
 }
 `
 const StyledSpan = styled.span`
@@ -136,7 +137,8 @@ transition: transform .2s;
 &:hover{
 color :${props => props.theme.articleHoverCL};
 transform: scale(1.2);
-background-color:${props => props.theme.articleHoverCL};
+
+
 }
 cursor: pointer;
 `
@@ -155,6 +157,7 @@ background-color :  ${props => props.theme.backgroundColorNV};
 border-radius : 0.5rem;
 &:hover{
 color :${props => props.theme.articleHoverCL};
+font-size:1.8rem;
 }
 `;
 

@@ -31,3 +31,11 @@ code {
   caret-color: rgb(197, 189, 189) !important;
 
 } */
+
+.fa-moon:hover
+ {
+    color:rgb(56, 116, 37) ;
+}
+.fa-sun:hover{
+    color:white;
+}

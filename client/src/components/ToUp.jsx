@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from '../plugins/axios';
 import useStore from '../store/store';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
@@ -52,11 +52,11 @@ const { setLoginStatus,
     {loginStatus ? 
         (<Frame>
       
-      <Up onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /></Up>
+      <Up onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"1x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /></Up>
       </Frame> )
         : (<Frame>
            
-                      <Up onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"2x"}  color={isDarkMode ? "#d1cfcf" : "#000000"}  /></Up>
+                      <Up onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"1x"}  color={isDarkMode ? "#d1cfcf" : "#000000"}  /></Up>
            
      </Frame>) }    
             </ThemeProvider>
@@ -83,8 +83,8 @@ bottom : 0;
 const Up = styled.div`
     margin: 0 130px 0 0;
     border: 3px solid ${props => props.theme.colorCT};
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius : 50%;
     transition: transform .2s;
 
