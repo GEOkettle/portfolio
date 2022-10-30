@@ -97,6 +97,9 @@ const { setLoginStatus,
 }
 
 const Frame = styled.div`
+ @media screen and (max-width: 1170px) {
+        height : 4rem;
+    }
 height : 6rem;
 display : flex;
 background-color : ${props => props.theme.backgroundColorNV};

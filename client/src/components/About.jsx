@@ -252,7 +252,7 @@ border-radius:5%;
 `
 const MainArticle = styled.div`
   @media screen and (max-width: 1170px) {
-        width:80%;
+        width:98%;
     }
     width:100%;
     /* width :60%;
