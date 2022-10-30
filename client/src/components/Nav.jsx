@@ -140,6 +140,9 @@ img{
 const StyledLink = styled(Link)`
 @media screen and (max-width: 500px) {
         font-size:1rem;
+        &:hover{
+    font-size:1.1rem;
+    }
     }
 text-decoration : none;
 color :${props => props.theme.colorCT};
@@ -151,20 +154,27 @@ transform: scale(1.2);
 }
 `
 const StyledLink2 = styled(Link)`
+    &:hover{
+    color :${props => props.theme.articleHoverCL};
+        font-size: 1.8rem;
+    }
 @media screen and (max-width: 500px) {
         font-size:1rem;
+        &:hover{
+        color :${props => props.theme.articleHoverCL};
+        font-size:1.1rem;
+    }
     }
 text-decoration : none;
 color :${props => props.theme.colorCT};
 transition: transform .2s;
-&:hover{
-color :${props => props.theme.articleHoverCL};
-    font-size: 1.8rem;
-}
 `
 const StyledSpan = styled.span`
 @media screen and (max-width: 500px) {
-        font-size:0.8rem;
+    font-size:0.8rem;
+    &:hover{
+    font-size:0.9rem;
+    }
     }
 text-decoration : none;
 color :${props => props.theme.colorCT};
@@ -179,6 +189,16 @@ cursor: pointer;
 `
 
 const StyledButton = styled.button`
+&:hover{
+color :${props => props.theme.articleHoverCL};
+font-size:1.8rem;
+}
+@media screen and (max-width: 1170px) {
+    font-size:0.8rem;
+    &:hover{
+    font-size:1.1rem;
+    }
+    }
 font-size : 1.5rem;
 font-family: 'Gugi', cursive;
 margin : 0 1rem;
@@ -190,9 +210,5 @@ cursor : pointer;
 color : ${props => props.theme.colorCT};
 background-color :  ${props => props.theme.backgroundColorNV};
 border-radius : 0.5rem;
-&:hover{
-color :${props => props.theme.articleHoverCL};
-font-size:1.8rem;
-}
 `;
 
