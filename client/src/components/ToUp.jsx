@@ -46,7 +46,7 @@ const { setLoginStatus,
     }
    
   return (
-      <div style={{ position: 'relative', zIndex: '1' }}>
+
           <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode } >
 
     {loginStatus ? 
@@ -60,7 +60,7 @@ const { setLoginStatus,
            
      </Frame>) }    
             </ThemeProvider>
-      </div>
+      
   )
 }
 

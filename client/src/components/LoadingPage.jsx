@@ -1,7 +1,10 @@
 import React from 'react'
+import {useEffect,useState,useRef} from 'react'
 import styled, { keyframes } from 'styled-components'
 
 function LoadingPage() {
+       const canvasRef = useRef(null)
+    const [canvasTag, setCanvasTag] = useState([])
   return (
    <SpinnerContainer>
           <LoadingSpinner>

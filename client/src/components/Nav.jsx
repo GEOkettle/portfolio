@@ -53,12 +53,13 @@ const { setLoginStatus,
     {loginStatus ? 
         (<Frame>
       <LogoFrame>
-      <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" />  
-      <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
+      <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" style={{width:"50px",height:"50px",margin:"17% 5% 0 0"}} />  
+      <h2>Portfolio</h2>
       </LogoFrame>
         
         <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink> 
-                {isEnglishMode? 'Credit' : '크레딧' }
+        <StyledLink to="/credit">{isEnglishMode? 'Credit' : '크레딧' }</StyledLink> 
+                
                 <StyledSpan onClick={changeLan}>
                 {isEnglishMode? '한/영' : 'En/Kor' }
                     </StyledSpan>
@@ -69,11 +70,11 @@ const { setLoginStatus,
       </Frame> )
         : (<Frame>
             <LogoFrame>
-            <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" />  
-            <h1>{isEnglishMode ? 'Portfolio' : '포트폴리오' }</h1>
+            <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" style={{width:"50px",height:"50px",margin:"17% 5% 0 0"}} />  
+            <h2>Portfolio</h2>
             </LogoFrame>
             <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink> 
-                {isEnglishMode? 'Credit' : '크레딧' }
+            <StyledLink to="/credit">{isEnglishMode? 'Credit' : '크레딧' }</StyledLink> 
                 <StyledSpan onClick={changeLan}>
                 {isEnglishMode? '한/영' : 'En/Kor' }
                     </StyledSpan>
@@ -105,7 +106,9 @@ border-bottom :  ${props => props.theme.border};
 justify-content : space-around;
 align-items : center;
 font-size : 1.5rem;
-font-family: 'Gugi', cursive;
+/* font-family: 'Gugi', cursive; */
+/* font-family: 'Oswald', sans-serif; */
+font-family: 'Stick No Bills', sans-serif;
 width : 100%;
 position : fixed;
 top : 0;
@@ -114,9 +117,16 @@ top : 0;
 //align-items : center flex상태에서 위로 몰린 텍스트 중앙을 정렬*
 
 const LogoFrame = styled.div`
+   @media screen and (max-width: 500px) {
+        img{
+            display:none;
+        }
+        font-size:0.5rem;
+        display:none;
+    }
 display:flex;
-font-size :1rem;
-font-style : italic;
+font-size :1.5rem;
+
 img{
     border-radius : 10%;
     /* box-shadow:0px 5px 5px #cbc4c433; */
@@ -125,6 +135,9 @@ img{
 `;
 
 const StyledLink = styled(Link)`
+@media screen and (max-width: 500px) {
+        font-size:1rem;
+    }
 text-decoration : none;
 color :${props => props.theme.colorCT};
 transition: transform .2s;
@@ -135,6 +148,9 @@ transform: scale(1.2);
 }
 `
 const StyledLink2 = styled(Link)`
+@media screen and (max-width: 500px) {
+        font-size:1rem;
+    }
 text-decoration : none;
 color :${props => props.theme.colorCT};
 transition: transform .2s;
@@ -144,6 +160,9 @@ color :${props => props.theme.articleHoverCL};
 }
 `
 const StyledSpan = styled.span`
+@media screen and (max-width: 500px) {
+        font-size:0.8rem;
+    }
 text-decoration : none;
 color :${props => props.theme.colorCT};
 transition: transform .2s;

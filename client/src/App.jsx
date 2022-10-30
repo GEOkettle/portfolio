@@ -9,6 +9,7 @@ import Auth from './components/hoc/auth';
 import Nav from './components/Nav';
 import LoadingPage from './components/LoadingPage';
 import Notion from './components/Notion/Notion';
+import Credit from './components/Credit/Credit'
 import styled, { ThemeProvider } from 'styled-components';
 import useStore from './store/store';
 
@@ -21,10 +22,12 @@ function App() {
  
     const AuthAbout = Auth(About, null);
     const AuthNotion = Auth(Notion, null);
+    const AuthCredit = Auth(Credit, null);
     const AuthLogin = Auth(Login, false);
     const AuthRegister = Auth(Register, false);
   
     return (
+      
         <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
         <Theme style={{height :'inherit'}}>
            
@@ -34,12 +37,14 @@ function App() {
         <Route path='/lp' element={  <LoadingPage />} />
         <Route path='/about:id' element={   <AuthAbout />} />
         <Route path='/login' element={ <AuthLogin />} />
+        <Route path='/credit' element={ <AuthCredit />} />
         <Route path='/register' element={ <AuthRegister />} />
         <Route path='/notion/:slug' element={<AuthNotion />} />
         </Routes>
       <ToUp></ToUp>
         </Theme>
         </ThemeProvider>
+        
     )
 }
 

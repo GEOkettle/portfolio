@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NotionRenderer } from 'react-notion'
 import 'prismjs/themes/prism-tomorrow.css'; // only needed for code highlighting
 import 'react-notion/src/styles.css';
@@ -27,8 +27,8 @@ export function Article(props) {
         <h2>{props.title}</h2>
                     </div>
         
-        <h4>{props.description}</h4>
-        <h5>{props.date}</h5>
+                    <h4 style={{font:"15px Arial, sans-serif"}}>{props.description}</h4>
+        <h5 style={{font:"15px Arial, sans-serif"}}>{props.date}</h5>
         </Link>
         </ArticleFrame>
         
@@ -48,6 +48,9 @@ export default function About() {
     const [isLoading,setIsLoading] = useState(true)
     const [onClickColor,setOnClickColor] = useState('')
     const { scrollY } = useScroll();
+
+
+
     const setActiveColor = (e) => { 
         
         const color = e.target.href.split('#')[1]
@@ -60,6 +63,7 @@ export default function About() {
         ChannelIO('boot', {
         pluginKey: '57248d93-bea9-4afa-889a-0b5cba58121a'
         });
+        ChannelIO('setAppearance', 'dark')
     // 두번째 방법
     const NOTION_PAGE_ID = '83fca179f8314fd784e541e3368df6a5';
     const NOTION_PAGE_ID_KR ='658634c7564b47a285670ec94982331a'
@@ -76,11 +80,11 @@ export default function About() {
             fetch(`https://notion-api.splitbee.io/v1/page/${isEnglishMode ? NOTION_PAGE_ID : NOTION_PAGE_ID_KR}`)
             .then(res => res.json())
             .then((resJson) => {
-                setMainArticle(resJson);
-                setIsLoading(false)
-        setSection1(document.getElementById('section1').getBoundingClientRect().bottom)
-        setSection2(document.getElementById('section2').getBoundingClientRect().bottom)
-        setSection3(document.getElementById('section3').getBoundingClientRect().bottom)
+            setMainArticle(resJson);
+            setIsLoading(false)
+            setSection1(document.getElementById('section1').getBoundingClientRect().bottom)
+            setSection2(document.getElementById('section2').getBoundingClientRect().bottom)
+            setSection3(document.getElementById('section3').getBoundingClientRect().bottom)
     })
         })
     }, [isEnglishMode])
@@ -99,8 +103,7 @@ export default function About() {
       useEffect(() => {
         const body = document.body
         if (body.clientHeight >= body.scrollHeight) {
-                   console.log('scroll :' +body.scrollHeight)
-                      console.log('client : ' +body.clientHeight)
+                
                    document.getElementById('up').style.display = 'none'
                 } else { 
                    document.getElementById('up').style.display = ''
@@ -117,7 +120,7 @@ export default function About() {
                     document.getElementsByClassName('active')[0].classList.remove('active')
                 }   
                 document.getElementsByClassName("section1")[0].classList.add('active')
-            } else if ((section1 < scrollY) && (section2+section1-500 > scrollY)) {
+            } else if ((section1 < scrollY) && (section2+section1-300 > scrollY)) {
                 if (document.getElementsByClassName('active')[0]) { 
                     document.getElementsByClassName('active')[0].classList.remove('active')
                 }
@@ -129,19 +132,22 @@ export default function About() {
             document.getElementsByClassName("section3")[0].classList.add('active')
         }
     }
-     },[scrollY])
-    // while isLoading
+    }, [scrollY])
+    
 
     return (
         
         <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
+            <div style={{height:'20px'}}></div>
             {isLoading ? <LoadingPage/> :
                 <MainFrame>
                     
-                <SideBar>
+                    <SideBar>
+                  
+
                     <ul>
                     <li>
-                    <a href="#section1"  className='section1' onClick={e => setActiveColor(e)}>{isEnglishMode ? 'Self-introduction' : '자기소개'}</a>
+                    <a href="#section1"  className='section1' onClick={e => setActiveColor(e)}>{isEnglishMode ? 'Intro' : '자기소개'}</a>
                     </li>
                         
                     <li>
@@ -151,6 +157,7 @@ export default function About() {
                     <a  href="#section3" className='section3' onClick={e=>setActiveColor(e)}>{isEnglishMode ? 'Contact' : '연락처'}</a>
                     </li>
                     </ul>
+                    
                 </SideBar>
                 <section id='section1'>
                     
@@ -244,7 +251,10 @@ border-radius:5%;
 
 `
 const MainArticle = styled.div`
-    width :100%;
+    width:100%;
+    /* width :60%;
+    padding :0 0 0 400px; */
+    
   /* border : 1px solid tomato; */
     .notion{
         //darkmodechange
@@ -263,7 +273,8 @@ const MainArticle = styled.div`
 `
 
 const MainFrame = styled.div`
-    font-family: 'Orbitron', sans-serif;
+    /* font-family: 'Orbitron', sans-serif; */
+    font-family: 'Hahmlet', serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -279,6 +290,9 @@ const MainFrame = styled.div`
 `
 
 const SideBar = styled.div`
+   @media screen and (max-width: 1170px) {
+       display: none;
+    }
    background:  ${props => props.theme.backgroundColor};
     height: 90%;
     width:15%;
