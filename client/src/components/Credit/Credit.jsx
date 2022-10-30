@@ -4,7 +4,10 @@ import styled, { keyframes } from 'styled-components'
 
 function Credit() {
     const canvasRef = useRef(null)
-    
+    ChannelIO('boot', {
+        pluginKey: '57248d93-bea9-4afa-889a-0b5cba58121a'
+        });
+        ChannelIO('setAppearance', 'dark')
     useEffect(() => {
         const canvas = canvasRef.current;
         canvas.width = document.body.scrollWidth;
@@ -44,7 +47,9 @@ function Credit() {
       }, [])
     useEffect(() => {
         const body = document.body
-        if (body.clientHeight >= body.scrollHeight) {
+        console.log(body.scrollHeight)
+        console.log(body.clientHeight)
+        if (body.clientHeight >= body.scrollHeight-1) {
                 
                 document.getElementById('up').style.display = 'none'
                 } else { 
