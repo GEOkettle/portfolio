@@ -22,7 +22,7 @@ function App() {
  
     const AuthAbout = Auth(About, null);
     const AuthNotion = Auth(Notion, null);
-    const AuthCredit = Auth(Credit, null);
+    const AuthCredit = Auth(Credit, false);
     const AuthLogin = Auth(Login, false);
     const AuthRegister = Auth(Register, false);
   

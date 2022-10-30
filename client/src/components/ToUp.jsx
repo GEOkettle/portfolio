@@ -81,12 +81,16 @@ bottom : 0;
 `;
 
 const Up = styled.div`
- @media screen and (max-width: 1190px) {
+ @media screen and (max-width: 1170px) {
     margin: 20px 70px 0 0;
     width: 30px;
     height: 30px;
     }
-
+ @media screen and (max-width: 1170px) {
+    margin: 20px 70px 0 0;
+    width: 30px;
+    height: 30px;
+    }
 
     margin: 0 130px 0 0;
     border: 3px solid ${props => props.theme.colorCT};

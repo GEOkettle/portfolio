@@ -45,17 +45,17 @@ function Credit() {
     
             setInterval(draw, 60);
       }, [])
-    useEffect(() => {
+ useEffect(() => {
         const body = document.body
-        console.log(body.scrollHeight)
-        console.log(body.clientHeight)
-        if (body.clientHeight >= body.scrollHeight-1) {
-                
-                document.getElementById('up').style.display = 'none'
+        if (body.clientHeight <= body.scrollHeight) {
+                   console.log('scroll :' +body.scrollHeight)
+                      console.log('client : ' +body.clientHeight)
+                   document.getElementById('up').style.display = 'none'
                 } else { 
-                document.getElementById('up').style.display = ''
-            }
-},[document.body.scrollHeight])
+                   document.getElementById('up').style.display = 'block'
+                   
+               }
+     },[document.body.scrollHeight])
     return (
 
             
