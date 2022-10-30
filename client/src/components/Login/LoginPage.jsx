@@ -1,6 +1,6 @@
 import React from 'react';
 // import styled from 'styled-components';
-import { useState} from 'react';
+import { useState,useEffect} from 'react';
 import useStore from '../../store/store';
 import styled from 'styled-components';
 import Logo from '../../assets/Logo.png';
@@ -10,8 +10,6 @@ export default function LoginPage() {
     //state for login info
     const [userID, setUserID] = useState('');
     const [password, setPassword] = useState('');
-
-    
 
     //
     const { loginfetch,loginStatus,setLoginStatus,setAccessToken,isEnglishMode} = useStore();
@@ -49,7 +47,17 @@ export default function LoginPage() {
         
     }
 
-
+ useEffect(() => {
+        const body = document.body
+        if (body.clientHeight <= body.scrollHeight) {
+                   console.log('scroll :' +body.scrollHeight)
+                      console.log('client : ' +body.clientHeight)
+                   document.getElementById('up').style.display = 'none'
+                } else { 
+                   document.getElementById('up').style.display = 'block'
+                   
+               }
+     },[document.body.scrollHeight])
 
 
   return (

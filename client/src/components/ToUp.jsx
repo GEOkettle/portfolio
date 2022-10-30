@@ -44,7 +44,7 @@ const { setLoginStatus,
         console.log('dmld?')
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }
-
+   
   return (
       <div style={{ position: 'relative', zIndex: '1' }}>
           <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode } >
@@ -52,11 +52,11 @@ const { setLoginStatus,
     {loginStatus ? 
         (<Frame>
       
-      <Up onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"1x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /></Up>
+      <Up id="up" onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"1x"}  color={isDarkMode ? "#d1cfcf" : "#000000"} /></Up>
       </Frame> )
         : (<Frame>
            
-                      <Up onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"1x"}  color={isDarkMode ? "#d1cfcf" : "#000000"}  /></Up>
+                      <Up id="up" onClick={goToUp}><FontAwesomeIcon icon={faArrowUp} size={"1x"}  color={isDarkMode ? "#d1cfcf" : "#000000"}  /></Up>
            
      </Frame>) }    
             </ThemeProvider>
@@ -89,13 +89,14 @@ const Up = styled.div`
     transition: transform .2s;
 
     &:hover{
-    background-color:${props => props.theme.articleHoverCL};
+    background-color:${props => props.theme.table};
     transform: scale(1.2);
     }
     cursor: pointer;
     display:flex;
     align-items:center;
     justify-content:center;
+    box-shadow: 3px 3px 5px grey;
     
 `
 

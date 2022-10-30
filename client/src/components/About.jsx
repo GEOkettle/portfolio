@@ -24,11 +24,11 @@ export function Article(props) {
                     <img style={{height: '100px',width:'200px',borderRadius:"5%"}} src={ props.imgsrc}  />
                     <div style={{height :'70px', overflow:'hidden'}}>
 
-        <h1>{props.title}</h1>
+        <h2>{props.title}</h2>
                     </div>
         
-        <p>{props.description}</p>
-        <p>{props.date}</p>
+        <h4>{props.description}</h4>
+        <h5>{props.date}</h5>
         </Link>
         </ArticleFrame>
         
@@ -95,6 +95,18 @@ export default function About() {
         }
     
     }, [onClickColor])
+    //이거도씹하드코딩이네 login register about
+      useEffect(() => {
+        const body = document.body
+        if (body.clientHeight >= body.scrollHeight) {
+                   console.log('scroll :' +body.scrollHeight)
+                      console.log('client : ' +body.clientHeight)
+                   document.getElementById('up').style.display = 'none'
+                } else { 
+                   document.getElementById('up').style.display = ''
+                   
+               }
+     },[document.body.scrollHeight])
     useEffect(() => {
 
         //개씹하드코딩이네
@@ -265,10 +277,11 @@ const MainFrame = styled.div`
 const SideBar = styled.div`
    background:  ${props => props.theme.backgroundColor};
     height: 90%;
-    width: 10%;
+    width:15%;
     position: fixed;
     bottom: 0;
     left: 0;
+    border-right: ${props => props.theme.border};
         .active{
                  color:${props => props.theme.articleHoverCL};
                 border-bottom: 2px solid ${props => props.theme.articleHoverCL};

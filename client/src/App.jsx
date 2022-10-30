@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import About from './components/About';
 import ToUp from './components/ToUp';
@@ -22,6 +23,7 @@ function App() {
     const AuthNotion = Auth(Notion, null);
     const AuthLogin = Auth(Login, false);
     const AuthRegister = Auth(Register, false);
+  
     return (
         <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
         <Theme style={{height :'inherit'}}>

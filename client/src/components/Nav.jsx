@@ -82,9 +82,12 @@ const { setLoginStatus,
                 </StyledSpan>
                   <div>
                 
-            <StyledLink to="/login">{isEnglishMode? 'Sign In' : '로그인' }</StyledLink>/  
+                          <StyledLink2 to="/login">
+                          
+                              {isEnglishMode ? 'Sign In' : '로그인'}
+                          </StyledLink2>/  
                  
-            <StyledLink to="/register">{isEnglishMode? 'Sign Up' : '회원가입' }</StyledLink>
+            <StyledLink2 to="/register">{isEnglishMode? 'Sign Up' : '회원가입' }</StyledLink2>
             </div>
      </Frame>) }    
             </ThemeProvider>
@@ -98,6 +101,7 @@ display : flex;
 background-color : ${props => props.theme.backgroundColorNV};
 color : ${props => props.theme.colorCT};
 box-shadow:${props => props.theme.navShadow};
+border-bottom :  ${props => props.theme.border};
 justify-content : space-around;
 align-items : center;
 font-size : 1.5rem;
@@ -127,7 +131,16 @@ transition: transform .2s;
 &:hover{
 color :${props => props.theme.articleHoverCL};
 transform: scale(1.2);
-font-size:1.8rem;
+
+}
+`
+const StyledLink2 = styled(Link)`
+text-decoration : none;
+color :${props => props.theme.colorCT};
+transition: transform .2s;
+&:hover{
+color :${props => props.theme.articleHoverCL};
+    font-size: 1.8rem;
 }
 `
 const StyledSpan = styled.span`
