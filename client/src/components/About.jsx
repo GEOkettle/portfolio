@@ -217,6 +217,10 @@ a{
     }
     
 }
+    transition: transform .2s;
+    &:hover{
+    transform: scale(1.1);
+    }
 padding: 12px;
 margin: 20px 25px;
 width: 200px;
