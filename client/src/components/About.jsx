@@ -164,7 +164,7 @@ export default function About() {
   />
     </MainArticle>
                 </section>
-                <section id='section2' style={{minHeight:'150px'}}>
+                <section id='section2' style={{minHeight:'50px'}}>
                 </section>
    
 
@@ -210,8 +210,11 @@ const Articleboard = styled.div`
     flex-wrap : wrap;
     align-items : center;
     width: 50%;
-    margin : 0 0 0 8%;
-    justify-content: flex-start ;
+    /* margin : 0 0 0 8%; */
+    justify-content: center ;
+    border : 1px solid black;
+    box-shadow: 3px 3px 5px 5px grey;
+    border-radius:2%;
     
 
 
@@ -242,7 +245,7 @@ border-radius:5%;
 `
 const MainArticle = styled.div`
     width :100%;
-
+  /* border : 1px solid tomato; */
     .notion{
         //darkmodechange
         color : ${props => props.theme.color};
@@ -266,6 +269,7 @@ const MainFrame = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    
     /* margin :0.5px 0 0 0 ; */
    
     background-color: ${props => props.theme.backgroundColor};
