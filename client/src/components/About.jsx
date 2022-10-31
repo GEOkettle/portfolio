@@ -267,6 +267,10 @@ box-shadow : 0 0 5px 5px   ${props => props.theme.backgroundColor};
 
 `
 const CardLink = styled(Link)`
+transition: transform .2s;
+    &:hover{
+    transform: scale(1.1);
+    }
 padding: 8px 0 0 0;
  width :90%;
  height:10%;
