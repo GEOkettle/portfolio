@@ -16,6 +16,9 @@ padding: 0;
 height: 100%;
 
 }
+.notion-page-header{
+    display: none !important;
+}
 img.notion-page-icon-offset {
   margin-top: -75px  !important;
   margin-left: 20px !important;

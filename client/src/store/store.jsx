@@ -21,7 +21,7 @@ const store = (set) => ({
         greenLine: ' 2px solid #1DA756;',
         table: ' #1DA756',
         tr : '#1DA756;',
-        articleBG: 'rgba(0,0,0,0.1);',
+        articleBG: '#061107',
         articleHoverCL: '#1DA756 !important;',
         border:'1px solid #1DA756'
     },

@@ -109,9 +109,10 @@ border-bottom :  ${props => props.theme.border};
 justify-content : space-around;
 align-items : center;
 font-size : 1.5rem;
-/* font-family: 'Gugi', cursive; */
-/* font-family: 'Oswald', sans-serif; */
-font-family: 'Stick No Bills', sans-serif;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight:bold;
+/* font-family: 'Stick No Bills', sans-serif; */
 width : 100%;
 position : fixed;
 top : 0;
@@ -200,7 +201,10 @@ font-size:1.8rem;
     }
     }
 font-size : 1.5rem;
-font-family: 'Gugi', cursive;
+/* font-family: 'Gugi', cursive;*/
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+    
 margin : 0 1rem;
 min-width : 4rem;
 min-height : 2rem;
