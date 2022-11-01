@@ -34,7 +34,7 @@ export default function LoginPage() {
             .then(res => {
 
                 if (res.loginsuccess) {
-                    // console.log('res.accessToken'+res.accessToken)
+
                     setLoginStatus(true);
                     setAccessToken(res.accessToken);
                  
@@ -61,107 +61,111 @@ export default function LoginPage() {
 
 
   return (
-    <StyledLogin>
-    
-    <StyledIntroduction>
-        <StyledImageContainer>
-    <img src={Logo} alt="logo" />  
-      </StyledImageContainer>
-        <p>
-        {isEnglishMode ? "Sign in to Geo's Portfolio" : '로그인'}          
-      
-      </p>
-    </StyledIntroduction>   
-
-      <StyledForm onSubmit={e => onSubmitHandler(e)}>
-        <div >
-        <label htmlFor="userID">{isEnglishMode ? "ID  " : '아이디 '}</label>
-        <StyledInput type="text" id='userID' name='userID' value={userID} onChange={e=>onUseridHandler(e)}  />
-        </div>
+      <>
+          <LoginFrame>
+              <LoginContainer>
+                  <span style={{fontSize:"1.5rem",fontWeight:"700"}}> {isEnglishMode ? "Sign In" : '로그인'}</span>
+                  <form onSubmit={e => onSubmitHandler(e)} style={{ margin:"25px 0 0 0"}}>
                 
-        <div>
-        <label htmlFor="password">{isEnglishMode ? "PW  " : '암호 '}  </label>
-        <StyledInput  type="password" id='password' name='password' value={password} onChange={e=>onPasswordHandler(e)}  />    
-        </div>
-              
-        <div>
-        <StyledButton type='submit'> {isEnglishMode ? "Sign in" : '로그인'}   </StyledButton>          
-        <StyledButton><StyledLink to="/register">{isEnglishMode ? "Sign up" : '회원가입'}</StyledLink></StyledButton>          
-        </div>
-        </StyledForm>
-          
-      </StyledLogin>
+            <InputDiv>
+              <label>ID</label>
+                <input type="text" id='userID' name='userID' value={userID} onChange={e=>onUseridHandler(e)}  />
+            </InputDiv>
+            <InputDiv >
+              <label>Password</label>
+                <input type="password" id='password' name='password' value={password} onChange={e=>onPasswordHandler(e)} />
+            </InputDiv>
+            <LoginButton type='submit'> {isEnglishMode ? "Sign in" : '로그인'}</LoginButton>
+            </form>
+            <br />
+            <hr />
+                  <p style={{textShadow:"0 0 1px gray",fontWeight:"100"}}>not a member? <StyledLink to="/register">{isEnglishMode ? "Sign up" : '회원가입'}</StyledLink></p>
+              </LoginContainer>
+      </LoginFrame>
+      </>
   )
 }
 
+const LoginFrame = styled.div`
+    @media screen and (min-width: 900px) and (max-width: 1190px) {
+        width:30%;
+        overflow-y:scroll;
+    }
+    @media screen  and (min-width: 650px)  and (max-width: 900px) {
+        width:50%;
+        height:50%;
+        overflow-y:scroll;
+    }
+    @media screen  and (min-width: 501px)  and (max-width: 650px) {
+        width:60%;
+        height:45%;
+        overflow-y:scroll;
+    }
+    @media screen and (max-width: 500px) {
+        width:70%;
+        overflow-y:scroll;
+    }
+    position:absolute;
+    top: 55%;
+    left:50%;
+     transform: translate(-50%, -50%);
+     background-color:white;
+    /* border:1px solid #24db70; */
+    border-radius:15px;
+    box-shadow : 0 0 2px 2px  white;
+    display:flex;
+    flex-direction:row;
+    width: 20%;
+    height: 55%;
+    align-items:center;
+    justify-content: space-evenly;
+    
+    `
+const LoginContainer = styled.div`
 
-const StyledLogin = styled.div`
-padding: 1rem;
-width : 50%;
-min-height : 30rem;
-
-margin : auto;
-position:relative;
-top:250px;
-border-radius : 1.5rem;
- font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight:bold;
-background-color :#E8E8E8;
-
-`;
-const StyledIntroduction = styled.div`
-align-items : center;
-display : flex;
-flex-direction : column;
-justify-content : space-around;
-font-size : 1.5rem;
-height : 40%;
-`;
-const StyledImageContainer = styled.div`
-
+    width: 60%;
+    height:80%;
+    align-items:center;
+    justify-content:center;
 `
-const StyledForm = styled.form`
-margin : 1rem auto;
-height : 15rem;
-align-items : center;
-display : flex;
-flex-direction : column;
-justify-content : space-around;
-background-color : black;
-width : 50%;
-color : white;
-border-radius : 1rem;
-`;
 
-const StyledButton = styled.button`
- font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight:bold;
-margin : 0 1rem;
-min-width : 4rem;
-min-height : 2rem;
-background: none;
-border : 1px solid white;
-cursor : pointer;
-color : black;
-background-color : white;
-border-radius : 0.5rem;
-&hover{
-    color :#0C6D10;
-}
-`;
-
-const StyledLink = styled(Link)`
-text-decoration : none;
-color : black;
-&hover{
-    color :#0C6D10;
+const LoginButton = styled.button`
+width: 100%;
+height:33px;
+margin: 20px 0 0 0;
+background-color:black;
+color:white;
+border:none;
+box-shadow: 0 0 2px 2px inset black;
+border-radius:5px;
+cursor: pointer;
+&:hover{
+    background-color: #1DA756;
+    box-shadow: 0 0 2px 2px inset #1DA756;
 }
 `
-const StyledInput = styled.input`
-    height : 2rem;
-    width : 15rem;
-    border-radius : 0.5rem;
-    border : 1px solid white;
-`;
+const InputDiv = styled.div`
+    min-height: 60px;
+    display:flex;
+    flex-direction:column;
+    margin: 10px 0 0 0;
+    label{
+        color:grey;
+        font-size:0.8rem;
+        margin: 0 0 5px 0%;
+    }
+    input{
+        height:35px;
+        border:none;
+    box-shadow: 0 0 1px 1px inset grey;
+    border-radius:5px;
+    }
+`
+const StyledLink=styled(Link)`
+    text-decoration:underline;
+    color:black;
+    &:hover{
+        color: #1DA756;
+    }
+
+`

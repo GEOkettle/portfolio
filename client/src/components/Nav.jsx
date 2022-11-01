@@ -153,6 +153,8 @@ color :${props => props.theme.navHoverCL};
 transform: scale(1.2);
 
 }
+
+
 `
 const StyledLink2 = styled(Link)`
     &:hover{
