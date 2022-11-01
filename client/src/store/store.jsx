@@ -22,6 +22,7 @@ const store = (set) => ({
         table: ' #1DA756',
         tr : '#1DA756;',
         articleBG: '#061107',
+        navHoverCL: '#1DA756 !important;',
         articleHoverCL: '#1DA756 !important;',
         border:'1px solid #1DA756',
         cardFrame:' #1DA756'
@@ -35,6 +36,7 @@ const store = (set) => ({
         table: '#5d7264',
         tr : '#ffffff;',
         articleBG: '#5d7264;',
+        navHoverCL: 'white !important;',
         articleHoverCL: '#24db70 !important;',
         border:'1px solid #000000',
         cardFrame:' #000000'

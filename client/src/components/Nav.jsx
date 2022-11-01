@@ -149,20 +149,20 @@ text-decoration : none;
 color :${props => props.theme.colorCT};
 transition: transform .2s;
 &:hover{
-color :${props => props.theme.articleHoverCL};
+color :${props => props.theme.navHoverCL};
 transform: scale(1.2);
 
 }
 `
 const StyledLink2 = styled(Link)`
     &:hover{
-    color :${props => props.theme.articleHoverCL};
+    color :${props => props.theme.navHoverCL};
         font-size: 1.5rem;
     }
 @media screen and (max-width: 500px) {
         font-size:1rem;
         &:hover{
-        color :${props => props.theme.articleHoverCL};
+        color :${props => props.theme.navHoverCL};
         font-size:1.1rem;
     }
     }
@@ -181,7 +181,7 @@ text-decoration : none;
 color :${props => props.theme.colorCT};
 transition: transform .2s;
 &:hover{
-color :${props => props.theme.articleHoverCL};
+color :${props => props.theme.navHoverCL};
 transform: scale(1.2);
 
 
@@ -191,7 +191,7 @@ cursor: pointer;
 
 const StyledButton = styled.button`
 &:hover{
-color :${props => props.theme.articleHoverCL};
+color :${props => props.theme.navHoverCL};
 font-size:1.8rem;
 }
 @media screen and (max-width: 1170px) {
