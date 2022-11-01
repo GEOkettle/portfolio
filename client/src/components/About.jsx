@@ -8,9 +8,8 @@ import { Link } from 'react-router-dom';
 import useStore from '../store/store';
 import { useScroll } from '../hook/useScroll';
 import LoadingPage from './LoadingPage';
+import { ReactComponent as Door } from '../assets/si-glyph-door.svg';
 import ChannelService from './ChannelTalk/ChannelService';
-
-
 
 // const notion = new NotionAPI();
 // const recordMap = await notion.getPage('83fca179f8314fd784e541e3368df6a5')
@@ -164,13 +163,16 @@ export default function About() {
 
                     <ul>
                     <li>
-                    <a href="#section1"  className='section1' onClick={e => setActiveColor(e)}>{isEnglishMode ? 'Intro' : '자기소개'}</a>
+                    <Door width="15" height="15" />
+                    <a href="#section1" className='section1' onClick={e => setActiveColor(e)}>{isEnglishMode ? 'Intro' : '자기소개'}</a>
                     </li>
                         
                     <li>
+                    <Door width="15" height="15" />
                     <a  href="#section2" className='section2' onClick={e=>setActiveColor(e)}>{isEnglishMode ? 'Projects' : '프로젝트'}</a>
                     </li>
                     <li>
+                    <Door width="15" height="15" />
                     <a  href="#section3" className='section3' onClick={e=>setActiveColor(e)}>{isEnglishMode ? 'Contact' : '연락처'}</a>
                     </li>
                     </ul>
@@ -261,7 +263,7 @@ padding: 12px;
 margin: 20px 25px;
 width: 200px;
 height:300px; 
-border-radius:20px;
+/* border-radius:20px; */
 border:1px solid inset;
 box-shadow : 0 0 5px 5px   ${props => props.theme.backgroundColor};
 
@@ -363,7 +365,11 @@ const SideBar = styled.div`
                 font-size:1.5rem;
                 
                  }
-             
+             svg{ 
+                 &:hover{
+                width:30;
+                height:30;
+             }}
  
     ul{
         list-style: none;

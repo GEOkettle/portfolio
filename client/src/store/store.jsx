@@ -34,7 +34,7 @@ const store = (set) => ({
         greenLine: ' 2px solid black',
         table: '#5d7264',
         tr : '#ffffff;',
-        articleBG: '#72c494;',
+        articleBG: '#5d7264;',
         articleHoverCL: '#24db70 !important;',
         border:'1px solid #000000',
         cardFrame:' #000000'

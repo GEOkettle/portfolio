@@ -43,7 +43,8 @@
     "passport-jwt": "^4.0.0",
     "redis": "^4.0.6",
     "util.inherits": "^1.0.3",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "vite-plugin-svgr": "^2.2.2"
   },
   "devDependencies": {
     "events": "^3.0.0",
