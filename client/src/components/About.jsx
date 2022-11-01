@@ -263,7 +263,6 @@ padding: 12px;
 margin: 20px 25px;
 width: 200px;
 height:300px; 
-/* border-radius:20px; */
 border:1px solid inset;
 box-shadow : 0 0 5px 5px   ${props => props.theme.backgroundColor};
 
