@@ -75,12 +75,12 @@ export default function LoginPage() {
 
       <StyledForm onSubmit={e => onSubmitHandler(e)}>
         <div >
-        <label htmlFor="userID">{isEnglishMode ? "ID : " : '아이디 :'}</label>
+        <label htmlFor="userID">{isEnglishMode ? "ID  " : '아이디 '}</label>
         <StyledInput type="text" id='userID' name='userID' value={userID} onChange={e=>onUseridHandler(e)}  />
         </div>
                 
         <div>
-        <label htmlFor="password">{isEnglishMode ? "PW : " : '암호 :'}  </label>
+        <label htmlFor="password">{isEnglishMode ? "PW  " : '암호 '}  </label>
         <StyledInput  type="password" id='password' name='password' value={password} onChange={e=>onPasswordHandler(e)}  />    
         </div>
               
@@ -97,14 +97,16 @@ export default function LoginPage() {
 
 const StyledLogin = styled.div`
 padding: 1rem;
-
 width : 50%;
 min-height : 30rem;
+
 margin : auto;
 position:relative;
 top:250px;
 border-radius : 1.5rem;
-font-family: 'Orbitron', sans-serif;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight:bold;
 background-color :#E8E8E8;
 
 `;
@@ -133,7 +135,9 @@ border-radius : 1rem;
 `;
 
 const StyledButton = styled.button`
-font-family: 'Orbitron', sans-serif;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight:bold;
 margin : 0 1rem;
 min-width : 4rem;
 min-height : 2rem;

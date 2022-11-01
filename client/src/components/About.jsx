@@ -35,7 +35,7 @@ export function Article(props) {
         {/* <h5 style={{font:"15px Arial, sans-serif"}}>{props.date}</h5> */}
                 </Link>
                 <CardLink to={props.link} >
-                    <div  style={{font:'"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,monospace',fontWeight:"bold"}}>바로가기</div>
+                    <div  style={{font:'"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,monospace',fontWeight:"bold"}}>{props.lan ? 'go to page' : '바로가기'}</div>
                 </CardLink>
         </ArticleFrame>
         
@@ -196,12 +196,13 @@ export default function About() {
     {ArticleList.map((blog, index) => {
         return (
             <Article
-            imgsrc={ blog.img}
-            title={blog.Name}
-            description={blog.description}
-            date={blog.date}
-            link={'/notion/' + blog.slug}
-            key={index}
+                imgsrc={blog.img}
+                title={blog.Name}
+                description={blog.description}
+                date={blog.date}
+                link={'/notion/' + blog.slug}
+                key={index}
+                lan={isEnglishMode}
             ></Article>
             
             
@@ -267,10 +268,15 @@ box-shadow : 0 0 5px 5px   ${props => props.theme.backgroundColor};
 
 `
 const CardLink = styled(Link)`
+
+
 transition: transform .2s;
-    &:hover{
+-webkit-transition:-webkit-transform transform .2s;
+&:hover{
     transform: scale(1.1);
-    }
+    -webkit-transform: scale(1.1);
+}
+
 padding: 8px 0 0 0;
  width :90%;
  height:10%;
