@@ -271,10 +271,13 @@ const CardLink = styled(Link)`
 
 
 transition: transform .2s;
--webkit-transition:-webkit-transform transform .2s;
+-webkit-transition:-webkit-transform  .2s;
 &:hover{
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
+}
+&:active{
+ background-color:white;
 }
 
 padding: 8px 0 0 0;
@@ -345,8 +348,9 @@ const SideBar = styled.div`
        display: none;
     }
    background:  ${props => props.theme.backgroundColor};
-    height: 90%;
-    width:15%;
+    padding: 10% 0 0 0;
+    height: 100%;
+    width:10%;
     position: fixed;
     bottom: 0;
     left: 0;

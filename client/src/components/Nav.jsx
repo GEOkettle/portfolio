@@ -53,7 +53,7 @@ const { setLoginStatus,
     {loginStatus ? 
         (<Frame>
       <LogoFrame>
-      <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" style={{width:"50px",height:"50px",margin:"17% 5% 0 0"}} />  
+      <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" style={{width:"50px",height:"50px",margin:"13% 5% 0 0"}} />  
       <h2>Portfolio</h2>
       </LogoFrame>
         
@@ -70,7 +70,7 @@ const { setLoginStatus,
       </Frame> )
         : (<Frame>
             <LogoFrame>
-            <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" style={{width:"50px",height:"50px",margin:"17% 5% 0 0"}} />  
+            <img onClick={changeMode}  src={isDarkMode ? Logo : LogoWhite} alt="logo" style={{width:"50px",height:"50px",margin:"13% 5% 0 0"}} />  
             <h2>Portfolio</h2>
             </LogoFrame>
             <StyledLink to="/about">{isEnglishMode? 'Projects' : '프로젝트' }</StyledLink> 
@@ -98,9 +98,9 @@ const { setLoginStatus,
 
 const Frame = styled.div`
  @media screen and (max-width: 1170px) {
-        height : 4rem;
+        height : 3rem;
     }
-height : 6rem;
+height : 4.5rem;
 display : flex;
 background-color : ${props => props.theme.backgroundColorNV};
 color : ${props => props.theme.colorCT};
@@ -108,7 +108,7 @@ box-shadow:${props => props.theme.navShadow};
 border-bottom :  ${props => props.theme.border};
 justify-content : space-around;
 align-items : center;
-font-size : 1.5rem;
+font-size : 1.1rem;
  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
     "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight:bold;
@@ -129,7 +129,7 @@ const LogoFrame = styled.div`
         display:none;
     }
 display:flex;
-font-size :1.5rem;
+font-size :1.3rem;
 
 img{
     border-radius : 10%;
@@ -157,7 +157,7 @@ transform: scale(1.2);
 const StyledLink2 = styled(Link)`
     &:hover{
     color :${props => props.theme.articleHoverCL};
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 @media screen and (max-width: 500px) {
         font-size:1rem;
