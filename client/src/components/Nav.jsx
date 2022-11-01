@@ -121,7 +121,7 @@ top : 0;
 //align-items : center flex상태에서 위로 몰린 텍스트 중앙을 정렬*
 
 const LogoFrame = styled.div`
-   @media screen and (max-width: 500px) {
+   @media screen and (max-width: 1180px) {
         img{
             display:none;
         }

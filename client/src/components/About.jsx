@@ -21,14 +21,14 @@ export function Article(props) {
     
             <ArticleFrame >
                 <Link to={props.link} >
-                     <img style={{ height: '100px', width: '200px' }} src={props.imgsrc} />
+                     <img style={{ height: '100px', width: '200px',margin:"0",padding:"0"}} src={props.imgsrc} />
                     {/* {props.imgsrc ?
                         <img style={{ height: '100px', width: '200px', borderRadius: "5%" }} src={props.imgsrc} />
                         :<div style={{ height: '100px', width: '200px', borderRadius: "5%" }}></div>
                     } */}
                     <div style={{height :'70px', overflow:'hidden'}}>
 
-        <h2>{props.title}</h2>
+        <h1>{props.title}</h1>
                     </div>
         
                     <h4 style={{font:'"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,monospace'}}>{props.description}</h4>
@@ -228,10 +228,10 @@ export default function About() {
 const Articleboard = styled.div`
 @media screen and (max-width: 1170px) {
     
-    box-shadow: 0 0 0 0 inset ${props => props.theme.articleHoverCL};
+    box-shadow: 0 0 0 0 inset ${props => props.theme.cardFrame};
 }
 
-box-shadow: 0 0 3px 3px inset ${props => props.theme.articleHoverCL};
+box-shadow: 0 0 3px 3px inset ${props => props.theme.cardFrame};
 border-radius: 20px;
 display: flex;
 flex-wrap : wrap;
@@ -271,10 +271,10 @@ const CardLink = styled(Link)`
 
 
 transition: transform .2s;
--webkit-transition:-webkit-transform  .2s;
+-webkit-transition:-webkit-transform  .5s;
 &:hover{
     transform: scale(1.1);
-    -webkit-transform: scale(1.1);
+    -webkit-transform: scale(1.1) !important;
 }
 &:active{
  background-color:white;
@@ -284,7 +284,8 @@ padding: 8px 0 0 0;
  width :90%;
  height:10%;
  
- background-color:${props => props.theme.articleHoverCL};
+ background-color:${props => props.theme.tr};
+ color:${props => props.theme.color};
  border-radius:10px;
  
 `

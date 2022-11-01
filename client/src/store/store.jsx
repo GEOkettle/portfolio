@@ -23,19 +23,21 @@ const store = (set) => ({
         tr : '#1DA756;',
         articleBG: '#061107',
         articleHoverCL: '#1DA756 !important;',
-        border:'1px solid #1DA756'
+        border:'1px solid #1DA756',
+        cardFrame:' #1DA756'
     },
     inLightMode: {
         color: '#37352F !important',
         colorCT: '#000000 !important',
-        backgroundColor: '#E8E8E8 !important',
-        backgroundColorNV: '#1DA756 !important',
+        backgroundColor: '#9aac9e !important',
+        backgroundColorNV: '#219953 !important',
         greenLine: ' 2px solid black',
-        table: '#E8E8E8',
-        tr : '#f2f2f2;',
-        articleBG: '#dcdcdc;',
-        articleHoverCL: 'white !important;',
-        border:'1px solid #000000'
+        table: '#5d7264',
+        tr : '#ffffff;',
+        articleBG: '#72c494;',
+        articleHoverCL: '#24db70 !important;',
+        border:'1px solid #000000',
+        cardFrame:' #000000'
     },
     isEnglishMode: true,
     setIsEnglishMode : (isEnglishMode) => set(state => ({...state, isEnglishMode})),
