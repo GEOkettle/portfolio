@@ -1,6 +1,7 @@
 import React from 'react'
 import {useEffect,useRef} from 'react'
 import styled, { keyframes } from 'styled-components'
+import CreditNotion from '../Notion/CreditNotion'
 
 function Credit() {
     const canvasRef = useRef(null)
@@ -57,11 +58,12 @@ function Credit() {
                }
      },[document.body.scrollHeight])
     return (
-
+<>
             
-      <canvas ref={canvasRef} style={{width:'100%',height:'99.6%',scroll:"hidden",margin:'0',padding:'0'}} >
-          
+          <CreditNotion  style={{zIndex:"1"}}></CreditNotion>
+      <canvas ref={canvasRef} style={{width:'100%',height:'99.6%',scroll:"hidden",margin:'0',padding:'0',zIndex:"0"}} >
       </canvas>
+</>
    
   )
 }
