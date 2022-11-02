@@ -15,7 +15,7 @@ function CreditNotion() {
     fetch(`https://notion-api.splitbee.io/v1/page/${isEnglishMode ? NOTION_CREDIT_ID : NOTION_CREDIT_ID_KR}`)
         .then((res) => res.json())
         .then((resJson) => { 
-            console.log(resJson)
+                
             setcontactAC(resJson)
         })
     }, [])

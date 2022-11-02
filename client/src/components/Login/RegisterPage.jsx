@@ -78,8 +78,6 @@ export default function RegisterPage() {
  useEffect(() => {
         const body = document.body
         if (body.clientHeight <= body.scrollHeight) {
-                   console.log('scroll :' +body.scrollHeight)
-                      console.log('client : ' +body.clientHeight)
                    document.getElementById('up').style.display = 'none'
                 } else { 
                    document.getElementById('up').style.display = 'block'

@@ -20,7 +20,6 @@ export default function Notion() {
 
     const { slug } = useParams()
     const [blockMap, setBlockMap] = useState({})
-    const [isLoading, setIsLoading] = useState(true)
     const [anchorList, setAnchorList] = useState([])
     const { scrollY } = useScroll();
  
@@ -60,7 +59,7 @@ export default function Notion() {
     useEffect(async () => { 
         const notionId = await notionSlugToId(slug)
         const notionData = await fetch(`https://notion-api.splitbee.io/v1/page/${notionId}`).then(res => res.json())
-        setIsLoading(false)
+      
         setBlockMap(notionData)
         
 
@@ -81,7 +80,7 @@ export default function Notion() {
 
 return (
     <ThemeProvider theme={isDarkMode ? inDarkMode : inLightMode}>
-        {isLoading ? <LoadingPage /> :
+     
         <>
         <BackToMain>
                     <StyledLink to="/about">{ isEnglishMode? "←Back To Main" : "←메인으로"}</StyledLink>
@@ -102,7 +101,7 @@ return (
         })}
         </GoToSuggestion>
             </>
-        }
+                
 
     </ThemeProvider>
 )

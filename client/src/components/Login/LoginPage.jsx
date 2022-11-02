@@ -50,8 +50,6 @@ export default function LoginPage() {
  useEffect(() => {
         const body = document.body
         if (body.clientHeight <= body.scrollHeight) {
-                   console.log('scroll :' +body.scrollHeight)
-                      console.log('client : ' +body.clientHeight)
                    document.getElementById('up').style.display = 'none'
                 } else { 
                    document.getElementById('up').style.display = 'block'
@@ -72,7 +70,7 @@ export default function LoginPage() {
                 <input type="text" id='userID' name='userID' value={userID} onChange={e=>onUseridHandler(e)}  />
             </InputDiv>
             <InputDiv >
-              <label>{isEnglishMode ? "Password" : '비밀번호'}</label>
+              <label>{isEnglishMode ? "Password" : ''}</label>
                 <input type="password" id='password' name='password' value={password} onChange={e=>onPasswordHandler(e)} />
             </InputDiv>
             <LoginButton type='submit'> {isEnglishMode ? "Sign In" : '로그인'}</LoginButton>
