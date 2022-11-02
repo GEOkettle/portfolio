@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import useStore from '../../store/store';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { Link, Routes, Route, Outlet } from "react-router-dom";
 export default function RegisterPage() {
  
     const navigate = useNavigate();
@@ -88,85 +88,121 @@ export default function RegisterPage() {
      },[document.body.scrollHeight])
   return (
    
-          <StyledRegister onSubmit={onSubmitHandler}>
-            <StyledForm>
-            <h1>{isEnglishMode ? 'Sign Up' : '회원가입' }</h1>
-            <span>{isEnglishMode ? 'ID' : '아이디' }  </span>
-            <StyledInput  onChange={e=> onIDHandler(e)} value={userID} type="text" />
-            <span>{isEnglishMode ? 'Email' : '이메일' }   </span>
-            <StyledInput  onChange={e=> onEmailHandler(e)} value={email} type="email" />
-            <span>{isEnglishMode ? 'Name' : '이름' }   </span>
-            <StyledInput  onChange={e=> onNameHandler(e)} value={name} type="text" />
-            <span>{isEnglishMode ? 'Password' : '비밀번호' }   </span>
-            <StyledInput  onChange={e=> onPWHandler(e)} value={PW} type="password" />
-            <span>{isEnglishMode ? 'Confirm Password' : '비밀번호 확인' }  </span>
-            <StyledInput  onChange={e=> onPWCheckHandler(e)} value={PWCheck} type="password" />
-            <StyledButton type="submit">{isEnglishMode ? 'Sign up' : '회원가입' }</StyledButton>
-            </StyledForm>
-          </StyledRegister>
+      <RegisterFrame>
+          <RegisterContainer>
+               <span style={{fontSize:"1.5rem",fontWeight:"700"}}> {isEnglishMode ? "Sign Up" : '회원가입'}</span>
+              <form  style={{ margin:"25px 0 0 0"}} onSubmit={onSubmitHandler}>
+              <InputDiv>
+              <label>{isEnglishMode ? 'ID' : '아이디' }</label>
+                <input  onChange={e=> onIDHandler(e)} value={userID} type="text"  />
+            </InputDiv>
+              <InputDiv>
+              <label>{isEnglishMode ? 'Email' : '이메일' } </label>
+                <input  onChange={e=> onEmailHandler(e)} value={email} type="email" />
+            </InputDiv>
+              <InputDiv>
+              <label>{isEnglishMode ? 'Name' : '이름' } </label>
+                <input  onChange={e=> onNameHandler(e)} value={name} type="text" />
+            </InputDiv>
+              <InputDiv>
+              <label>{isEnglishMode ? 'Password' : '비밀번호' }</label>
+                <input   onChange={e=> onPWHandler(e)} value={PW} type="password" />
+            </InputDiv>
+              <InputDiv>
+              <label>{isEnglishMode ? 'Confirm Password' : '비밀번호 확인' } </label>
+                <input onChange={e=> onPWCheckHandler(e)} value={PWCheck} type="password" />
+            </InputDiv>
+            <RegisterButton type="submit">{isEnglishMode ? 'Sign Up' : '회원가입' }</RegisterButton>
+              </form>
+              <br />
+            <hr />
+                  <p style={{textShadow:"0 0 1px gray",fontWeight:"100"}}>already a user? <StyledLink to="/login">{isEnglishMode ? "Sign In" : '로그인'}</StyledLink></p>
+          </RegisterContainer>
+     </RegisterFrame>
 
   )
 }
-const StyledRegister = styled.div`
+const RegisterFrame = styled.div`
+    @media screen and (min-width: 900px) and (max-width: 1190px) {
+        width:30%;
+        overflow-y:scroll;
+    }
+    @media screen  and (min-width: 650px)  and (max-width: 900px) {
+        width:50%;
+        height:50%;
+        overflow-y:scroll;
+    }
+    @media screen  and (min-width: 501px)  and (max-width: 650px) {
+        width:60%;
+        height:45%;
+        overflow-y:scroll;
+    }
+    @media screen and (max-width: 500px) {
+        width:70%;
+        overflow-y:scroll;
+    }
+    position:absolute;
+    top: 55%;
+    left:50%;
+     transform: translate(-50%, -50%);
+     background-color:white;
+    /* border:1px solid #24db70; */
+    border-radius:15px;
+    box-shadow : 0 0 2px 2px  white;
+    display:flex;
+    flex-direction:row;
+    width: 30%;
+    height: 70%;
+    align-items:center;
+    justify-content: space-evenly;
+    
+    `
 
-/* border : 3px solid #F5F5F5; */
-width : 40%;
-min-height : 30rem;
-/* min-height : 30rem; */
-margin : 0 auto;
-position:relative;
-top:200px;
-border-radius : 1.5rem;
-font-family: 'Orbitron', sans-serif;
-`;
+    const RegisterContainer = styled.div`
 
-const StyledForm = styled.form`
-margin : 1rem auto;
-height : 37rem;
-align-items : center;
-display : flex;
-flex-direction : column;
-justify-content : space-around;
-background-color : #000000;
-width : 70%;
-color : white;
-border-radius : 1rem;
-
-.contents_wrap{
-width:400px;
-display : flex;
-justify-content: space-around;
-align-items : center;
-flex-direction: column;
+    width: 60%;
+    height:80%;
+    align-items:center;
+    justify-content:center;
+`
+const InputDiv = styled.div`
+    min-height: 60px;
+    display:flex;
+    flex-direction:column;
+    margin: 10px 0 0 0;
+    label{
+        color:grey;
+        font-size:0.8rem;
+        margin: 0 0 5px 0%;
+    }
+    input{
+        height:35px;
+        border:none;
+    box-shadow: 0 0 1px 1px inset grey;
+    border-radius:5px;
+    }
+`
+const RegisterButton = styled.button`
+width: 100%;
+height:33px;
+margin: 20px 0 0 0;
+background-color:black;
+color:white;
+border:none;
+box-shadow: 0 0 2px 2px inset black;
+border-radius:5px;
+cursor: pointer;
+&:hover{
+    background-color: #1DA756;
+    box-shadow: 0 0 2px 2px inset #1DA756;
 }
+`
 
-span{
-display : flex;
-justify-content: flex-start;
-align-items : center;
-width:250px;
-margin-bottom:6px;
-}
-`;
+const StyledLink=styled(Link)`
+    text-decoration:underline;
+    color:black;
+    &:hover{
+        color: #1DA756;
+    }
 
-const StyledInput = styled.input`
-height : 2rem;
-width : 15rem;
-border-radius : 0.5rem;
-border : 1px solid white;
-`;
-
-const StyledButton = styled.button`
-font-family: 'Orbitron', sans-serif;
-margin : 0 1rem;
-min-width : 4rem;
-min-height : 2rem;
-background: none;
-border : 1px solid white;
-cursor : pointer;
-color : black;
-background-color : white;
-border-radius : 0.5rem;
-&hover{
-color :#0C6D10;
-}`;
+`   

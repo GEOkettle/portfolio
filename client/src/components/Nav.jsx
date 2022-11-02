@@ -105,7 +105,7 @@ display : flex;
 background-color : ${props => props.theme.backgroundColorNV};
 color : ${props => props.theme.colorCT};
 box-shadow:${props => props.theme.navShadow};
-border-bottom :  ${props => props.theme.border};
+border-bottom :  ${props => props.theme.navBorder};
 justify-content : space-around;
 align-items : center;
 font-size : 1.1rem;

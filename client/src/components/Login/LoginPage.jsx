@@ -68,18 +68,18 @@ export default function LoginPage() {
                   <form onSubmit={e => onSubmitHandler(e)} style={{ margin:"25px 0 0 0"}}>
                 
             <InputDiv>
-              <label>ID</label>
+              <label>{isEnglishMode ? "ID" : '아이디'}</label>
                 <input type="text" id='userID' name='userID' value={userID} onChange={e=>onUseridHandler(e)}  />
             </InputDiv>
             <InputDiv >
-              <label>Password</label>
+              <label>{isEnglishMode ? "Password" : '비밀번호'}</label>
                 <input type="password" id='password' name='password' value={password} onChange={e=>onPasswordHandler(e)} />
             </InputDiv>
-            <LoginButton type='submit'> {isEnglishMode ? "Sign in" : '로그인'}</LoginButton>
+            <LoginButton type='submit'> {isEnglishMode ? "Sign In" : '로그인'}</LoginButton>
             </form>
             <br />
             <hr />
-                  <p style={{textShadow:"0 0 1px gray",fontWeight:"100"}}>not a member? <StyledLink to="/register">{isEnglishMode ? "Sign up" : '회원가입'}</StyledLink></p>
+                  <p style={{textShadow:"0 0 1px gray",fontWeight:"100"}}>not a member? <StyledLink to="/register">{isEnglishMode ? "Sign Up" : '회원가입'}</StyledLink></p>
               </LoginContainer>
       </LoginFrame>
       </>

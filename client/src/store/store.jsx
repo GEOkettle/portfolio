@@ -25,6 +25,7 @@ const store = (set) => ({
         navHoverCL: '#1DA756 !important;',
         articleHoverCL: '#1DA756 !important;',
         border:'1px solid #1DA756',
+        navBorder:'1px solid #1DA756',
         cardFrame:' #1DA756'
     },
     inLightMode: {
@@ -39,6 +40,7 @@ const store = (set) => ({
         navHoverCL: 'white !important;',
         articleHoverCL: '#24db70 !important;',
         border:'1px solid #000000',
+        navBorder:'none',
         cardFrame:' #000000'
     },
     isEnglishMode: true,

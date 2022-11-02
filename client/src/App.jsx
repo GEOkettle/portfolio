@@ -7,7 +7,7 @@ import Login from './components/Login/LoginPage';
 import Register from './components/Login/RegisterPage';
 import Auth from './components/hoc/auth';
 import Nav from './components/Nav';
-import LoadingPage from './components/LoadingPage';
+import Contact from './components/Notion/Contact';
 import Notion from './components/Notion/Notion';
 import Credit from './components/Credit/Credit'
 import styled, { ThemeProvider } from 'styled-components';
@@ -34,8 +34,8 @@ function App() {
         <Nav></Nav>
         <Routes >
         <Route path='*' element={  <AuthAbout />} />
-        <Route path='/lp' element={  <LoadingPage />} />
         <Route path='/about:id' element={   <AuthAbout />} />
+        <Route path='/ab' element={   <Contact />} />
         <Route path='/login' element={ <AuthLogin />} />
         <Route path='/credit' element={ <AuthCredit />} />
         <Route path='/register' element={ <AuthRegister />} />
