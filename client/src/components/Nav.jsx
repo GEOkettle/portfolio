@@ -116,6 +116,7 @@ font-size : 1.1rem;
 width : 100%;
 position : fixed;
 top : 0;
+z-index:25;
 `;
 
 //align-items : center flex상태에서 위로 몰린 텍스트 중앙을 정렬*

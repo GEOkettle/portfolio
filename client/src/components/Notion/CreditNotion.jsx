@@ -21,7 +21,7 @@ function CreditNotion() {
     }, [])
  
   return (
-    <ContactAC  style={{zIndex:"3"}}>
+    <ContactAC >
     <NotionRenderer 
 
     blockMap={contactAC}
@@ -50,6 +50,6 @@ const ContactAC = styled.div`
     .notion-nav-title{
     color : ${props => props.theme.color};
     }
-    z-index:2;
+   
     
 `

@@ -11,8 +11,8 @@ function Credit() {
         ChannelIO('setAppearance', 'dark')
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.width = document.body.scrollWidth;
-        canvas.height = document.body.scrollHeight;
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
     
 
         const context = canvas.getContext('2d');
@@ -44,13 +44,11 @@ function Credit() {
             }
             };
     
-            setInterval(draw, 60);
+            setInterval(draw, 90);
       }, [])
  useEffect(() => {
         const body = document.body
         if (body.clientHeight <= body.scrollHeight) {
-                   console.log('scroll :' +body.scrollHeight)
-                      console.log('client : ' +body.clientHeight)
                    document.getElementById('up').style.display = 'none'
                 } else { 
                    document.getElementById('up').style.display = 'block'
@@ -61,11 +59,37 @@ function Credit() {
 <>
             
           <CreditNotion  style={{zIndex:"1"}}></CreditNotion>
-      <canvas ref={canvasRef} style={{width:'100%',height:'99.6%',scroll:"hidden",margin:'0',padding:'0',zIndex:"0"}} >
-      </canvas>
+      <StyledCanvas ref={canvasRef} >
+      </StyledCanvas>
 </>
    
   )
 }
 
 export default Credit
+
+
+const StyledCanvas = styled.canvas`
+@media screen and (max-height: 280px) {
+    height:300%;
+    }
+@media screen and (min-height: 281px) and (max-height: 750px) {
+    height:230%;
+    }
+@media screen and (min-height: 750px) and (max-height: 815px) {
+    height:150%;
+    }
+@media screen and (min-height: 816px) and (max-height: 820px) {
+    height:110%;
+    }
+@media screen and (min-height: 821px) and (max-height: 920px) {
+    height:140%;
+    }
+
+    width:100%;
+    height:99.6%;
+    overflow:hidden;
+    margin:0;
+    padding:0;
+   
+`
